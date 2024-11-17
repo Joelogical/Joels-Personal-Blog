@@ -1,6 +1,5 @@
 // TODO: Create a variable that selects the form element
-const intakeForm = document.getElementById("intakeform");
-const usernameInput = document.getElementById("username");
+const intakeForm = document.querySelector("form");
 
 intakeForm.addEventListener("submit", (event) =>{
     event.preventDefault();
@@ -14,23 +13,21 @@ intakeForm.addEventListener("submit", (event) =>{
 
 function handleFormSubmission(event) {
     event.preventDefault();
-    const intakeForm = event.target; //get data
-    const intakeFormData = new FormData(intakeForm);
-
-    const formValues = {}; // FormData object
-    FormData.forEach((userName, usernameInput) => {
-        formValues[userName] = value;
-        
-    });
-    // error message
-    const missingFeilds = Object.keys(formValues).filter(userName => !formValues[userName]);
-
-    if (missingFeilds.length > 0) {
-        const errorMessage = `Please complete the form.`;
-        displayErrorMessage(errorMessage);
+    const storeUsername = document.querySelector("#username").value;
+    const title = document.querySelector("#title").value;
+    const content = document.querySelector("#content").value;
+    if (!storeUsername || !title || !content) {
+        const errorMessage = document.querySelector("#error-message").value;
+        errorMessage.textContent = "Please complete the form.";
         return;
     }
-    
+
+    const formObject = {
+        username:storeUsername,
+        title:title,
+        content:content
+    };
+  
     localStorage.setItem('formData', JSON.stringify(formValues));
     
 }

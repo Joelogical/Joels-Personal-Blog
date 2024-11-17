@@ -1,6 +1,8 @@
+const toggle = document.querySelector("toggle");
+let redirectURL = "";
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. 
 //The mode should be saved to local storage.
-function toggleTheme() {
+function toggleTheme(mode) {
   const currentTheme = localStorage.getItem('theme') || 'light'; 
   const newTheme = currentTheme === 'light' ? 'dark' : 'light'; 
 
@@ -22,7 +24,7 @@ function readLocalStorage(form) {
 // TODO: Create a function called `storeLocalStorage` that takes a given object and 
 //saves the new data to the existing blog data in local storage.
 
-let redirectURL = '';
+
 
 const redirectPage = function (url) {
   event.preventDefault();
